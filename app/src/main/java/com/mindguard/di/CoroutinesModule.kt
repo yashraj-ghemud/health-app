@@ -24,6 +24,12 @@ object CoroutinesModule {
     fun provideApplicationScope(): CoroutineScope {
         return CoroutineScope(SupervisorJob() + Dispatchers.Default)
     }
+
+    @Provides
+    @Singleton
+    fun provideCoroutineScope(@ApplicationScope scope: CoroutineScope): CoroutineScope {
+        return scope
+    }
     
     @Provides
     fun provideIoDispatcher() = Dispatchers.IO
