@@ -84,11 +84,11 @@ class MainActivity : AppCompatActivity() {
         finish()
     }
     
-    override fun onNewIntent(intent: Intent?) {
+    override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         
         // Handle deep links or notification intents
-        intent?.let {
+        intent.let {
             when (it.getStringExtra("open_tab")) {
                 "dashboard" -> {
                     // Navigate to dashboard tab
