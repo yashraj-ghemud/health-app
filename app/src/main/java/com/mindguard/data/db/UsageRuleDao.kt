@@ -13,6 +13,9 @@ interface UsageRuleDao {
     @Query("SELECT * FROM usage_rules ORDER BY createdAt")
     fun getAllRules(): Flow<List<UsageRule>>
     
+    @Query("SELECT * FROM usage_rules ORDER BY createdAt")
+    suspend fun getAllRulesSync(): List<UsageRule>
+    
     @Query("SELECT * FROM usage_rules WHERE id = :id")
     suspend fun getRuleById(id: String): UsageRule?
     

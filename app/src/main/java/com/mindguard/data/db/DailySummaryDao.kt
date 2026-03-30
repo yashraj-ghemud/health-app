@@ -19,6 +19,9 @@ interface DailySummaryDao {
     @Query("SELECT * FROM daily_summary ORDER BY date DESC LIMIT :limit")
     fun getRecentSummaries(limit: Int = 7): Flow<List<DailySummary>>
     
+    @Query("SELECT * FROM daily_summary ORDER BY date DESC LIMIT :limit")
+    suspend fun getRecentSummariesSync(limit: Int = 7): List<DailySummary>
+    
     @Query("SELECT MAX(streakDays) FROM daily_summary")
     suspend fun getBestStreak(): Int?
     

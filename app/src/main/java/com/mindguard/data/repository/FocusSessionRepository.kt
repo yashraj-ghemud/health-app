@@ -15,6 +15,8 @@ class FocusSessionRepository @Inject constructor(
     
     fun getAllSessions(): Flow<List<FocusSession>> = focusSessionDao.getAllSessions()
     
+    suspend fun getAllSessionsSync(): List<FocusSession> = focusSessionDao.getAllSessionsSync()
+    
     fun getCompletedSessions(): Flow<List<FocusSession>> = focusSessionDao.getCompletedSessions()
     
     suspend fun getActiveSession(): FocusSession? {

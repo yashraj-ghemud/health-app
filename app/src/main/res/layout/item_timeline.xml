@@ -14,9 +14,10 @@
         android:text="Timeline"
         android:layout_marginBottom="16dp" />
 
-    <com.github.vipulasri.timelineview.TimelineView
+    <View
         android:id="@+id/timelineView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="200dp"
+        android:background="#EEEEEE" />
 
 </LinearLayout>

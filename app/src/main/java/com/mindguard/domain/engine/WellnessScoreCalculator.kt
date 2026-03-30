@@ -27,7 +27,7 @@ class WellnessScoreCalculator @Inject constructor(
         )
     }
     
-    fun calculateWellnessScore(
+    suspend fun calculateWellnessScore(
         totalTime: Int,
         productiveTime: Int,
         entertainmentTime: Int,
@@ -79,7 +79,7 @@ class WellnessScoreCalculator @Inject constructor(
     
     private suspend fun hasLateNightUsage(date: String): Boolean {
         // Check for usage between 11 PM and 6 AM
-        val events = usageEventRepository.getEventsForDate(date)
+        val events = usageEventRepository.getEventsForDateSync(date)
         
         return events.any { event ->
             val calendar = Calendar.getInstance()
@@ -92,7 +92,7 @@ class WellnessScoreCalculator @Inject constructor(
     
     private suspend fun hasLateNightUsageSync(date: String): Boolean {
         // Check for usage between 11 PM and 6 AM
-        val events = usageEventRepository.getEventsForDate(date)
+        val events = usageEventRepository.getEventsForDateSync(date)
         
         return events.any { event ->
             val calendar = Calendar.getInstance()

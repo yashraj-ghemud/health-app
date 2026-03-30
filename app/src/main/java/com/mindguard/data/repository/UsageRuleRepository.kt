@@ -16,6 +16,8 @@ class UsageRuleRepository @Inject constructor(
     
     fun getAllRules(): Flow<List<UsageRule>> = usageRuleDao.getAllRules()
     
+    suspend fun getAllRulesSync(): List<UsageRule> = usageRuleDao.getAllRulesSync()
+    
     suspend fun getRuleById(id: String): UsageRule? {
         return usageRuleDao.getRuleById(id)
     }

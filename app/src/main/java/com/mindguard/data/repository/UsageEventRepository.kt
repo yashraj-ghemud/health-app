@@ -21,6 +21,10 @@ class UsageEventRepository @Inject constructor(
         return usageEventDao.getEventsForDate(date)
     }
     
+    suspend fun getEventsForDateSync(date: String): List<UsageEvent> {
+        return usageEventDao.getEventsForDateSync(date)
+    }
+    
     fun getEventsForDateRange(startDate: String, endDate: String): Flow<List<UsageEvent>> {
         return usageEventDao.getEventsForDateRange(startDate, endDate)
     }

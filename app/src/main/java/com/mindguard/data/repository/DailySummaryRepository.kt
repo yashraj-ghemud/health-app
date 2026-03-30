@@ -25,6 +25,10 @@ class DailySummaryRepository @Inject constructor(
         return dailySummaryDao.getRecentSummaries(limit)
     }
     
+    suspend fun getRecentSummariesSync(limit: Int = 7): List<DailySummary> {
+        return dailySummaryDao.getRecentSummariesSync(limit)
+    }
+    
     suspend fun getBestStreak(): Int {
         return dailySummaryDao.getBestStreak() ?: 0
     }

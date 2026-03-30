@@ -80,8 +80,7 @@ class RulesEngine @Inject constructor(
         val categoryRules = usageRuleRepository.getRulesForCategory(category)
         
         // Get general rules (no specific package or category)
-        val generalRules = usageRuleRepository.getAllRules()
-            .map { it }
+        val generalRules = usageRuleRepository.getAllRulesSync()
             .filter { rule -> rule.targetCategory == null && rule.targetPackage == null }
         
         // Combine and deduplicate by rule ID

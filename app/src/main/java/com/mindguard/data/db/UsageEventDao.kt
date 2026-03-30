@@ -10,6 +10,9 @@ interface UsageEventDao {
     @Query("SELECT * FROM usage_events WHERE date = :date ORDER BY startTimestamp DESC")
     fun getEventsForDate(date: String): Flow<List<UsageEvent>>
     
+    @Query("SELECT * FROM usage_events WHERE date = :date ORDER BY startTimestamp DESC")
+    suspend fun getEventsForDateSync(date: String): List<UsageEvent>
+    
     @Query("SELECT * FROM usage_events WHERE date >= :startDate AND date <= :endDate ORDER BY startTimestamp DESC")
     fun getEventsForDateRange(startDate: String, endDate: String): Flow<List<UsageEvent>>
     

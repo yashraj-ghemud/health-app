@@ -11,6 +11,9 @@ interface FocusSessionDao {
     @Query("SELECT * FROM focus_sessions ORDER BY startTime DESC")
     fun getAllSessions(): Flow<List<FocusSession>>
     
+    @Query("SELECT * FROM focus_sessions ORDER BY startTime DESC")
+    suspend fun getAllSessionsSync(): List<FocusSession>
+    
     @Query("SELECT * FROM focus_sessions WHERE completed = 1 ORDER BY startTime DESC")
     fun getCompletedSessions(): Flow<List<FocusSession>>
     

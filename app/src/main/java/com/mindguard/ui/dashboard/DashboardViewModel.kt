@@ -130,8 +130,8 @@ class DashboardViewModel @Inject constructor(
     }
     
     private suspend fun getWeeklyTrend(): String {
-        val summaries = dailySummaryRepository.getRecentSummaries(7)
-        val scores = summaries.mapNotNull { it?.wellnessScore }
+        val summaries = dailySummaryRepository.getRecentSummariesSync(7)
+        val scores = summaries.map { it.wellnessScore }
         
         return if (scores.size >= 2) {
             val recent = scores.takeLast(3).average()

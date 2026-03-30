@@ -10,6 +10,9 @@ interface AchievementDao {
     @Query("SELECT * FROM achievements ORDER BY category, title")
     fun getAllAchievements(): Flow<List<Achievement>>
     
+    @Query("SELECT * FROM achievements ORDER BY category, title")
+    suspend fun getAllAchievementsSync(): List<Achievement>
+    
     @Query("SELECT * FROM achievements WHERE achievementKey = :key")
     suspend fun getAchievementByKey(key: String): Achievement?
     

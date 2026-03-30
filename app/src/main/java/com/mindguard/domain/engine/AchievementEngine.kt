@@ -37,7 +37,7 @@ class AchievementEngine @Inject constructor(
             try {
                 // Check first focus session
                 if (!achievementRepository.isAchievementUnlocked("first_focus_session")) {
-                    val totalSessions = focusSessionRepository.getAllSessions().value.size
+                    val totalSessions = focusSessionRepository.getAllSessionsSync().size
                     if (totalSessions >= 1) {
                         unlockAchievement("first_focus_session")
                         unlockedAchievements.add(getAchievement("first_focus_session"))
@@ -241,7 +241,7 @@ class AchievementEngine @Inject constructor(
     suspend fun checkNightOwlAchievements(date: String) {
         engineScope.launch {
             try {
-                val events = usageEventRepository.getEventsForDate(date)
+                val events = usageEventRepository.getEventsForDateSync(date)
                 val hasLateNightUsage = events.any { event ->
                     val calendar = Calendar.getInstance()
                     calendar.timeInMillis = event.startTimestamp
@@ -285,7 +285,7 @@ class AchievementEngine @Inject constructor(
     }
     
     suspend fun getAchievementProgress(): AchievementProgress {
-        val totalAchievements = achievementRepository.getAllAchievements().value.size
+        val totalAchievements = achievementRepository.getAllAchievementsSync().size
         val unlockedAchievements = achievementRepository.getUnlockedCount()
         val newAchievements = achievementRepository.getNewAchievements()
         

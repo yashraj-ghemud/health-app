@@ -14,6 +14,8 @@ class AchievementRepository @Inject constructor(
     
     fun getAllAchievements(): Flow<List<Achievement>> = achievementDao.getAllAchievements()
     
+    suspend fun getAllAchievementsSync(): List<Achievement> = achievementDao.getAllAchievementsSync()
+    
     suspend fun getAchievementByKey(key: String): Achievement? {
         return achievementDao.getAchievementByKey(key)
     }
