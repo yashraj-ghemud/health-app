@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Rect
+import android.text.TextPaint
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
@@ -52,7 +53,7 @@ class TimelineView @JvmOverloads constructor(
 ) : View(context, attrs, defStyleAttr) {
     
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
-    private val textPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val textPaint = TextPaint(Paint.ANTI_ALIAS_FLAG)
     private val backgroundPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     
     private var timelineBlocks: List<TimelineBlock> = emptyList()
@@ -154,8 +155,7 @@ class TimelineView @JvmOverloads constructor(
                 // Truncate text if necessary
                 val maxTextWidth = blockRight - blockLeft - 20f
                 val displayText = if (textBounds.width() > maxTextWidth) {
-                    val ellipsis = "..."
-                    val truncatedText = android.text.TextUtils.ellipsize(block.appLabel, textPaint as android.text.TextPaint, maxTextWidth, 
+                    val truncatedText = android.text.TextUtils.ellipsize(block.appLabel, textPaint, maxTextWidth, 
                         android.text.TextUtils.TruncateAt.END)
                     truncatedText?.toString() ?: block.appLabel
                 } else {

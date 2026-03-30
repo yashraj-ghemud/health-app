@@ -331,15 +331,19 @@ class UsageMonitorService : Service() {
         
         monitoringJob?.cancel()
         flushJob?.cancel()
-        serviceScope.cancel()
         
         try {
-            serviceScope.launch {
-                sessionTracker.stopTracking()
+            // Stop tracking before cancelling the scope, with timeout to avoid ANR
+            kotlinx.coroutines.runBlocking {
+                kotlinx.coroutines.withTimeoutOrNull(3000L) {
+                    sessionTracker.stopTracking()
+                }
             }
         } catch (e: Exception) {
             Timber.e(e, "Error stopping session tracker")
         }
+        
+        serviceScope.cancel()
     }
     
     data class ForegroundAppInfo(

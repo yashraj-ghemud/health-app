@@ -3,8 +3,10 @@ package com.mindguard.data.db
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import androidx.room.ProvidedTypeConverter
 import com.mindguard.data.model.*
 
+@ProvidedTypeConverter
 class Converters {
     
     @TypeConverter
