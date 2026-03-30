@@ -155,7 +155,6 @@ class TimelineView @JvmOverloads constructor(
                 // Truncate text if necessary
                 val maxTextWidth = blockRight - blockLeft - 20f
                 val displayText = if (textBounds.width() > maxTextWidth) {
-                    val ellipsis = "..."
                     val truncatedText = android.text.TextUtils.ellipsize(block.appLabel, textPaint, maxTextWidth, 
                         android.text.TextUtils.TruncateAt.END)
                     truncatedText?.toString() ?: block.appLabel
