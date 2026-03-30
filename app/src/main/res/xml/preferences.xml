@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="General">
+        <SwitchPreferenceCompat
+            app:key="notifications_enabled"
+            app:title="Enable Notifications"
+            app:summary="Receive alerts and daily summaries"
+            app:defaultValue="true" />
+
+        <SwitchPreferenceCompat
+            app:key="dark_mode"
+            app:title="Dark Mode"
+            app:summary="Use dark theme throughout the app"
+            app:defaultValue="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Digital Wellness">
+        <Preference
+            app:key="app_categories"
+            app:title="App Categories"
+            app:summary="Manage how apps are categorized" />
+
+        <Preference
+            app:key="rules_management"
+            app:title="Usage Rules"
+            app:summary="Set limits and interventions" />
+
+        <Preference
+            app:key="focus_settings"
+            app:title="Focus Mode Settings"
+            app:summary="Configure your focus sessions" />
+            
+        <Preference
+            app:key="focus_duration"
+            app:title="Default Focus Duration"
+            app:summary="25 minutes" />
+            
+        <Preference
+            app:key="sleep_hours"
+            app:title="Sleep Guard Hours"
+            app:summary="23:00 - 07:00" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Data &amp; Privacy">
+        <Preference
+            app:key="export_data"
+            app:title="Export My Data"
+            app:summary="Download your usage history as CSV" />
+
+        <Preference
+            app:key="reset_settings"
+            app:title="Reset All Settings"
+            app:summary="Restore app to original state" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Support">
+        <Preference
+            app:key="about"
+            app:title="About MindGuard"
+            app:summary="Version 1.0.0" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

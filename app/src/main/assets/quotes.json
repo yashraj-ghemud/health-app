@@ -1,0 +1,302 @@
+[
+  {
+    "text": "Your time is limited, don't waste it living someone else's life.",
+    "author": "Steve Jobs",
+    "category": "focus",
+    "tags": ["time", "purpose", "authenticity"]
+  },
+  {
+    "text": "The only way to do great work is to love what you do.",
+    "author": "Steve Jobs",
+    "category": "passion",
+    "tags": ["work", "love", "greatness"]
+  },
+  {
+    "text": "Focus on being productive instead of busy.",
+    "author": "Tim Ferriss",
+    "category": "productivity",
+    "tags": ["focus", "efficiency", "productivity"]
+  },
+  {
+    "text": "You don't have to be great to start, but you have to start to be great.",
+    "author": "Zig Ziglar",
+    "category": "motivation",
+    "tags": ["start", "greatness", "beginning"]
+  },
+  {
+    "text": "The secret of getting ahead is getting started.",
+    "author": "Mark Twain",
+    "category": "action",
+    "tags": ["start", "progress", "action"]
+  },
+  {
+    "text": "Don't watch the clock; do what it does. Keep going.",
+    "author": "Sam Levenson",
+    "category": "persistence",
+    "tags": ["time", "persistence", "consistency"]
+  },
+  {
+    "text": "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+    "author": "Winston Churchill",
+    "category": "resilience",
+    "tags": ["success", "failure", "courage", "resilience"]
+  },
+  {
+    "text": "Believe you can and you're halfway there.",
+    "author": "Theodore Roosevelt",
+    "category": "belief",
+    "tags": ["belief", "confidence", "mindset"]
+  },
+  {
+    "text": "The future depends on what you do today.",
+    "author": "Mahatma Gandhi",
+    "category": "action",
+    "tags": ["future", "today", "action", "responsibility"]
+  },
+  {
+    "text": "Quality is not an act, it is a habit.",
+    "author": "Aristotle",
+    "category": "habit",
+    "tags": ["quality", "habit", "excellence"]
+  },
+  {
+    "text": "Your limitation—it's only your imagination.",
+    "author": "Unknown",
+    "category": "mindset",
+    "tags": ["limitation", "imagination", "potential"]
+  },
+  {
+    "text": "Great things never come from comfort zones.",
+    "author": "Unknown",
+    "category": "growth",
+    "tags": ["comfort", "growth", "challenge", "discomfort"]
+  },
+  {
+    "text": "Dream it. Wish it. Do it.",
+    "author": "Unknown",
+    "category": "action",
+    "tags": ["dream", "wish", "do", "action"]
+  },
+  {
+    "text": "Success doesn't just find you. You have to go out and get it.",
+    "author": "Unknown",
+    "category": "success",
+    "tags": ["success", "effort", "proactive"]
+  },
+  {
+    "text": "The harder you work for something, the greater you'll feel when you achieve it.",
+    "author": "Unknown",
+    "category": "effort",
+    "tags": ["work", "achievement", "effort", "reward"]
+  },
+  {
+    "text": "Don't stop when you're tired. Stop when you're done.",
+    "author": "Unknown",
+    "category": "persistence",
+    "tags": ["tired", "done", "persistence", "endurance"]
+  },
+  {
+    "text": "Wake up with determination. Go to bed with satisfaction.",
+    "author": "Unknown",
+    "category": "daily",
+    "tags": ["morning", "evening", "determination", "satisfaction"]
+  },
+  {
+    "text": "Do something today that your future self will thank you for.",
+    "author": "Sean Patrick Flanery",
+    "category": "future",
+    "tags": ["future", "today", "gratitude", "foresight"]
+  },
+  {
+    "text": "Little things make big days.",
+    "author": "Unknown",
+    "category": "habits",
+    "tags": ["small", "big", "habits", "consistency"]
+  },
+  {
+    "text": "It's going to be hard, but hard does not mean impossible.",
+    "author": "Unknown",
+    "category": "challenge",
+    "tags": ["hard", "impossible", "challenge", "possibility"]
+  },
+  {
+    "text": "The way to get started is to quit talking and begin doing.",
+    "author": "Walt Disney",
+    "category": "action",
+    "tags": ["start", "talking", "doing", "action"]
+  },
+  {
+    "text": "Don't be afraid to give up the good to go for the great.",
+    "author": "John D. Rockefeller",
+    "category": "growth",
+    "tags": ["good", "great", "sacrifice", "ambition"]
+  },
+  {
+    "text": "The pessimist sees difficulty in every opportunity. The optimist sees opportunity in every difficulty.",
+    "author": "Winston Churchill",
+    "category": "mindset",
+    "tags": ["pessimist", "optimist", "opportunity", "difficulty"]
+  },
+  {
+    "text": "You learn more from failure than from success. Don't let it stop you. Failure builds character.",
+    "author": "Unknown",
+    "category": "failure",
+    "tags": ["failure", "success", "learning", "character"]
+  },
+  {
+    "text": "If you are working on something that you really care about, you don't have to be pushed. The vision pulls you.",
+    "author": "Steve Jobs",
+    "category": "passion",
+    "tags": ["care", "vision", "motivation", "purpose"]
+  },
+  {
+    "text": "Knowing is not enough; we must apply. Wishing is not enough; we must do.",
+    "author": "Johann Wolfgang Von Goethe",
+    "category": "action",
+    "tags": ["knowing", "applying", "wishing", "doing"]
+  },
+  {
+    "text": "The only impossible journey is the one you never begin.",
+    "author": "Tony Robbins",
+    "category": "action",
+    "tags": ["impossible", "journey", "begin", "start"]
+  },
+  {
+    "text": "In the middle of difficulty lies opportunity.",
+    "author": "Albert Einstein",
+    "category": "opportunity",
+    "tags": ["difficulty", "opportunity", "challenge", "perspective"]
+  },
+  {
+    "text": "It is during our darkest moments that we must focus to see the light.",
+    "author": "Aristotle",
+    "category": "resilience",
+    "tags": ["darkness", "light", "focus", "hope"]
+  },
+  {
+    "text": "Whoever is happy will make others happy too.",
+    "author": "Anne Frank",
+    "category": "happiness",
+    "tags": ["happy", "others", "positivity", "influence"]
+  },
+  {
+    "text": "You will face many defeats in life, but never let yourself be defeated.",
+    "author": "Maya Angelou",
+    "category": "resilience",
+    "tags": ["defeats", "life", "resilience", "strength"]
+  },
+  {
+    "text": "The purpose of our lives is to be happy.",
+    "author": "Dalai Lama",
+    "category": "purpose",
+    "tags": ["purpose", "life", "happiness", "meaning"]
+  },
+  {
+    "text": "Many of life's failures are people who did not realize how close they were to success when they gave up.",
+    "author": "Thomas Edison",
+    "category": "persistence",
+    "tags": ["failure", "success", "persistence", "giving up"]
+  },
+  {
+    "text": "Success is walking from failure to failure with no loss of enthusiasm.",
+    "author": "Winston Churchill",
+    "category": "success",
+    "tags": ["success", "failure", "enthusiasm", "persistence"]
+  },
+  {
+    "text": "The way I see it, if you want the rainbow, you gotta put up with the rain.",
+    "author": "Dolly Parton",
+    "category": "resilience",
+    "tags": ["rainbow", "rain", "challenge", "reward"]
+  },
+  {
+    "text": "When you reach the end of your rope, tie a knot in it and hang on.",
+    "author": "Franklin D. Roosevelt",
+    "category": "resilience",
+    "tags": ["end", "rope", "hang on", "survival"]
+  },
+  {
+    "text": "Always remember that you are absolutely unique. Just like everyone else.",
+    "author": "Margaret Mead",
+    "category": "individuality",
+    "tags": ["unique", "individuality", "self-worth"]
+  },
+  {
+    "text": "The best time to plant a tree was 20 years ago. The second best time is now.",
+    "author": "Chinese Proverb",
+    "category": "action",
+    "tags": ["time", "plant", "tree", "now", "action"]
+  },
+  {
+    "text": "Your limitation—it's only your imagination.",
+    "author": "Unknown",
+    "category": "mindset",
+    "tags": ["limitation", "imagination", "potential", "possibility"]
+  },
+  {
+    "text": "Great things never come from comfort zones.",
+    "author": "Unknown",
+    "category": "growth",
+    "tags": ["comfort", "growth", "challenge", "discomfort"]
+  },
+  {
+    "text": "Push yourself, because no one else is going to do it for you.",
+    "author": "Unknown",
+    "category": "motivation",
+    "tags": ["push", "yourself", "motivation", "self-reliance"]
+  },
+  {
+    "text": "Great things never come from comfort zones.",
+    "author": "Unknown",
+    "category": "growth",
+    "tags": ["comfort", "growth", "challenge", "discomfort"]
+  },
+  {
+    "text": "Dream it. Believe it. Build it.",
+    "author": "Unknown",
+    "category": "action",
+    "tags": ["dream", "believe", "build", "create"]
+  },
+  {
+    "text": "Success doesn't just find you. You have to go out and get it.",
+    "author": "Unknown",
+    "category": "success",
+    "tags": ["success", "effort", "proactive", "achievement"]
+  },
+  {
+    "text": "The harder you work for something, the greater you'll feel when you achieve it.",
+    "author": "Unknown",
+    "category": "effort",
+    "tags": ["work", "achievement", "effort", "reward"]
+  },
+  {
+    "text": "Don't stop when you're tired. Stop when you're done.",
+    "author": "Unknown",
+    "category": "persistence",
+    "tags": ["tired", "done", "persistence", "endurance"]
+  },
+  {
+    "text": "Wake up with determination. Go to bed with satisfaction.",
+    "author": "Unknown",
+    "category": "daily",
+    "tags": ["morning", "evening", "determination", "satisfaction"]
+  },
+  {
+    "text": "Do something today that your future self will thank you for.",
+    "author": "Sean Patrick Flanery",
+    "category": "future",
+    "tags": ["future", "today", "gratitude", "foresight"]
+  },
+  {
+    "text": "Little things make big days.",
+    "author": "Unknown",
+    "category": "habits",
+    "tags": ["small", "big", "habits", "consistency"]
+  },
+  {
+    "text": "It's going to be hard, but hard does not mean impossible.",
+    "author": "Unknown",
+    "category": "challenge",
+    "tags": ["hard", "impossible", "challenge", "possibility"]
+  }
+]
