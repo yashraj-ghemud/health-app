@@ -1,1 +1,62 @@
-<?xml version="1.0" encoding="utf-8"?><LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical"><ImageView android:id="@+id/ivLogo" android:layout_width="wrap_content" android:layout_height="wrap_content" /><TextView android:id="@+id/tvTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" /><TextView android:id="@+id/tvSubtitle" android:layout_width="wrap_content" android:layout_height="wrap_content" /><TextView android:id="@+id/tvDescription" android:layout_width="wrap_content" android:layout_height="wrap_content" /></LinearLayout>
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="32dp">
+
+    <FrameLayout
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="32dp">
+
+        <View
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:background="@drawable/bg_circle_white" />
+
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_shield"
+            android:contentDescription="MindGuard Logo" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to MindGuard"
+        android:textSize="28sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your phone. Your rules."
+        android:textSize="18sp"
+        android:textColor="#CCFFFFFF"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:layout_marginBottom="24dp" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Take control of your digital life with intelligent monitoring and gentle interventions that help you build healthier habits."
+        android:textSize="15sp"
+        android:textColor="#B3FFFFFF"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp"
+        android:paddingHorizontal="16dp" />
+</LinearLayout>

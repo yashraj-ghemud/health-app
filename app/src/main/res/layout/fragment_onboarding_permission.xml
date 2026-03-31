@@ -1,1 +1,110 @@
-<?xml version="1.0" encoding="utf-8"?><LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center"><TextView android:id="@+id/textView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Placeholder" /></LinearLayout>
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="32dp">
+
+    <!-- Icon -->
+    <FrameLayout
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="32dp">
+
+        <View
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/bg_circle_white" />
+
+        <ImageView
+            android:id="@+id/ivPermissionIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_permission_lock"
+            android:contentDescription="Permission icon" />
+    </FrameLayout>
+
+    <!-- Permission Name -->
+    <TextView
+        android:id="@+id/tvPermissionName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Permission Required"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Importance Badge -->
+    <TextView
+        android:id="@+id/tvImportance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Essential"
+        android:textSize="13sp"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_permission_card"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="4dp"
+        android:gravity="center"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Description -->
+    <TextView
+        android:id="@+id/tvPermissionDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="This permission is required for the app to function properly."
+        android:textSize="15sp"
+        android:textColor="#B3FFFFFF"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp"
+        android:paddingHorizontal="16dp"
+        android:layout_marginBottom="32dp" />
+
+    <!-- Status indicator -->
+    <LinearLayout
+        android:id="@+id/statusContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_permission_card"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="12dp"
+        android:layout_marginBottom="24dp">
+
+        <ImageView
+            android:id="@+id/ivStatusIcon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="Status" />
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Not Granted"
+            android:textSize="14sp"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <!-- Grant Button -->
+    <Button
+        android:id="@+id/btnGrant"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_button_primary"
+        android:text="Grant Permission"
+        android:textColor="@color/primary"
+        android:textSize="15sp"
+        android:textAllCaps="false"
+        android:paddingHorizontal="32dp"
+        android:fontFamily="sans-serif-medium" />
+</LinearLayout>

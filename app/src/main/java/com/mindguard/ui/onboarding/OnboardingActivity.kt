@@ -51,7 +51,7 @@ class OnboardingActivity : AppCompatActivity() {
         }
         
         binding.btnSkip.setOnClickListener {
-            navigateToMain()
+            viewModel.skipOnboarding()
         }
     }
     
@@ -86,14 +86,8 @@ class OnboardingActivity : AppCompatActivity() {
         binding.btnNext.text = if (isLastPage) "Get Started" else "Next"
         binding.btnSkip.visibility = if (isLastPage) android.view.View.GONE else android.view.View.VISIBLE
         
-        // Update button states based on current fragment
-        val currentFragment = adapter.getFragment(position)
-        if (currentFragment is PermissionFragment) {
-            val hasPermission = currentFragment.hasPermission()
-            binding.btnNext.isEnabled = hasPermission
-        } else {
-            binding.btnNext.isEnabled = true
-        }
+        // Always allow next - permission is handled on click
+        binding.btnNext.isEnabled = true
     }
     
     private fun handleNextClick() {
@@ -102,7 +96,7 @@ class OnboardingActivity : AppCompatActivity() {
         if (currentPosition < adapter.itemCount - 1) {
             val currentFragment = adapter.getFragment(currentPosition)
             
-            if (currentFragment is PermissionFragment) {
+            if (currentFragment is PermissionFragment && currentFragment.isAdded && currentFragment.context != null) {
                 if (!currentFragment.hasPermission()) {
                     currentFragment.requestPermission()
                     return
@@ -141,7 +135,7 @@ class OnboardingActivity : AppCompatActivity() {
         val currentPosition = binding.viewPager.currentItem
         val currentFragment = adapter.getFragment(currentPosition)
         
-        if (currentFragment is PermissionFragment) {
+        if (currentFragment is PermissionFragment && currentFragment.isAdded && currentFragment.context != null) {
             currentFragment.requestPermission()
         }
     }

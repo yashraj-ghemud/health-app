@@ -5,7 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.mindguard.R
 import com.mindguard.utils.PermissionManager
 
 abstract class PermissionFragment : Fragment() {
@@ -14,20 +18,61 @@ abstract class PermissionFragment : Fragment() {
     protected abstract val permissionDescription: String
     protected abstract val importanceLevel: String
     
+    private var tvPermissionName: TextView? = null
+    private var tvPermissionDescription: TextView? = null
+    private var tvImportance: TextView? = null
+    private var tvStatus: TextView? = null
+    private var ivStatusIcon: ImageView? = null
+    private var btnGrant: Button? = null
+    
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Create a basic layout for permission fragments
-        return createPermissionLayout()
+        return inflater.inflate(R.layout.fragment_onboarding_permission, container, false)
     }
     
-    private fun createPermissionLayout(): View {
-        // This would be replaced with proper XML layout inflation
-        // For now, creating a simple view programmatically
-        return View(requireContext()).apply {
-            // Set up basic permission UI
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        
+        tvPermissionName = view.findViewById(R.id.tvPermissionName)
+        tvPermissionDescription = view.findViewById(R.id.tvPermissionDescription)
+        tvImportance = view.findViewById(R.id.tvImportance)
+        tvStatus = view.findViewById(R.id.tvStatus)
+        ivStatusIcon = view.findViewById(R.id.ivStatusIcon)
+        btnGrant = view.findViewById(R.id.btnGrant)
+        
+        setupUI()
+    }
+    
+    private fun setupUI() {
+        tvPermissionName?.text = permissionName
+        tvPermissionDescription?.text = permissionDescription
+        tvImportance?.text = importanceLevel
+        
+        updatePermissionStatus()
+        
+        btnGrant?.setOnClickListener {
+            requestPermission()
+        }
+    }
+    
+    override fun onResume() {
+        super.onResume()
+        updatePermissionStatus()
+    }
+    
+    private fun updatePermissionStatus() {
+        val granted = hasPermission()
+        if (granted) {
+            tvStatus?.text = "Granted"
+            ivStatusIcon?.setImageResource(R.drawable.ic_check_circle)
+            btnGrant?.visibility = View.GONE
+        } else {
+            tvStatus?.text = "Not Granted"
+            ivStatusIcon?.setImageDrawable(null)
+            btnGrant?.visibility = View.VISIBLE
         }
     }
     
@@ -41,6 +86,16 @@ abstract class PermissionFragment : Fragment() {
     
     protected fun getPermissionManager(): PermissionManager {
         return PermissionManager()
+    }
+    
+    override fun onDestroyView() {
+        super.onDestroyView()
+        tvPermissionName = null
+        tvPermissionDescription = null
+        tvImportance = null
+        tvStatus = null
+        ivStatusIcon = null
+        btnGrant = null
     }
 }
 
