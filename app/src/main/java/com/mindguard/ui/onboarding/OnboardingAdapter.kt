@@ -24,6 +24,7 @@ class OnboardingAdapter(private val activity: FragmentActivity) : FragmentStateA
     }
     
     fun getFragment(position: Int): Fragment? {
-        return activity.supportFragmentManager.findFragmentByTag("f$position")
+        val itemId = getItemId(position)
+        return activity.supportFragmentManager.findFragmentByTag("f$itemId")
     }
 }

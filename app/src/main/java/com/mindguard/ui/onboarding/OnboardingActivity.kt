@@ -86,18 +86,8 @@ class OnboardingActivity : AppCompatActivity() {
         binding.btnNext.text = if (isLastPage) "Get Started" else "Next"
         binding.btnSkip.visibility = if (isLastPage) android.view.View.GONE else android.view.View.VISIBLE
         
-        // Update button states based on current fragment
-        val currentFragment = adapter.getFragment(position)
-        if (currentFragment is PermissionFragment) {
-            try {
-                val hasPermission = currentFragment.hasPermission()
-                binding.btnNext.isEnabled = true // Always allow next, but prompt if needed
-            } catch (e: Exception) {
-                binding.btnNext.isEnabled = true
-            }
-        } else {
-            binding.btnNext.isEnabled = true
-        }
+        // Always allow next - permission is handled on click
+        binding.btnNext.isEnabled = true
     }
     
     private fun handleNextClick() {
@@ -106,14 +96,10 @@ class OnboardingActivity : AppCompatActivity() {
         if (currentPosition < adapter.itemCount - 1) {
             val currentFragment = adapter.getFragment(currentPosition)
             
-            if (currentFragment is PermissionFragment) {
-                try {
-                    if (!currentFragment.hasPermission()) {
-                        currentFragment.requestPermission()
-                        return
-                    }
-                } catch (e: Exception) {
-                    // If we can't check permission, just move to next page
+            if (currentFragment is PermissionFragment && currentFragment.isAdded && currentFragment.context != null) {
+                if (!currentFragment.hasPermission()) {
+                    currentFragment.requestPermission()
+                    return
                 }
             }
             
@@ -149,12 +135,8 @@ class OnboardingActivity : AppCompatActivity() {
         val currentPosition = binding.viewPager.currentItem
         val currentFragment = adapter.getFragment(currentPosition)
         
-        if (currentFragment is PermissionFragment) {
-            try {
-                currentFragment.requestPermission()
-            } catch (e: Exception) {
-                // Fragment may not be attached
-            }
+        if (currentFragment is PermissionFragment && currentFragment.isAdded && currentFragment.context != null) {
+            currentFragment.requestPermission()
         }
     }
     
