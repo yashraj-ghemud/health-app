@@ -30,10 +30,7 @@ object CoroutinesModule {
     fun provideCoroutineScope(@ApplicationScope scope: CoroutineScope): CoroutineScope {
         return scope
     }
-    
+
     @Provides
     fun provideIoDispatcher() = Dispatchers.IO
-    
-    @Provides
-    fun provideMainDispatcher() = Dispatchers.Main
 }

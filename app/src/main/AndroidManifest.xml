@@ -42,7 +42,7 @@
         <activity
             android:name=".ui.onboarding.OnboardingActivity"
             android:exported="false"
-            android:theme="@style/Theme.MindGuard.NoActionBar" />
+            android:theme="@style/Theme.MindGuard.Onboarding" />
 
         <!-- Focus Session Activity -->
         <activity

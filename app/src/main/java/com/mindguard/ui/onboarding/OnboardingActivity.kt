@@ -51,7 +51,7 @@ class OnboardingActivity : AppCompatActivity() {
         }
         
         binding.btnSkip.setOnClickListener {
-            navigateToMain()
+            viewModel.skipOnboarding()
         }
     }
     
@@ -89,8 +89,12 @@ class OnboardingActivity : AppCompatActivity() {
         // Update button states based on current fragment
         val currentFragment = adapter.getFragment(position)
         if (currentFragment is PermissionFragment) {
-            val hasPermission = currentFragment.hasPermission()
-            binding.btnNext.isEnabled = hasPermission
+            try {
+                val hasPermission = currentFragment.hasPermission()
+                binding.btnNext.isEnabled = true // Always allow next, but prompt if needed
+            } catch (e: Exception) {
+                binding.btnNext.isEnabled = true
+            }
         } else {
             binding.btnNext.isEnabled = true
         }
@@ -103,9 +107,13 @@ class OnboardingActivity : AppCompatActivity() {
             val currentFragment = adapter.getFragment(currentPosition)
             
             if (currentFragment is PermissionFragment) {
-                if (!currentFragment.hasPermission()) {
-                    currentFragment.requestPermission()
-                    return
+                try {
+                    if (!currentFragment.hasPermission()) {
+                        currentFragment.requestPermission()
+                        return
+                    }
+                } catch (e: Exception) {
+                    // If we can't check permission, just move to next page
                 }
             }
             
@@ -142,7 +150,11 @@ class OnboardingActivity : AppCompatActivity() {
         val currentFragment = adapter.getFragment(currentPosition)
         
         if (currentFragment is PermissionFragment) {
-            currentFragment.requestPermission()
+            try {
+                currentFragment.requestPermission()
+            } catch (e: Exception) {
+                // Fragment may not be attached
+            }
         }
     }
     
