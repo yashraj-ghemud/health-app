@@ -1,116 +1,68 @@
-# MindGuard - Digital Wellness App
+# health-app
+> MindGuard — a native Android Kotlin app that tracks foreground app usage, enforces configurable usage rules (notifications/overlays/blocking), provides focus sessions and achievements, and exposes a dashboard and home widget.
 
-MindGuard is a native Android app that helps you take control of your screen time and build healthier digital habits. It monitors app usage in real-time, enforces customizable limits, and rewards you with achievements for staying on track.
+## Overview
+Compact Android application implemented in Kotlin. The project uses a standard single-module layout with DI (Hilt), Room, DataStore, WorkManager, and modern Android libraries to monitor app usage, run interventions (overlays/notifications), and provide focus/session features.
 
-## Features
+## What it does
+- Tracks foreground app usage and sessions (SessionTracker).
+- Maintains an in-memory blocklist with timed unblock behavior (BlocklistManager).
+- Shows intervention overlays and notifications (InterventionManager, InterventionOverlayView).
+- Loads motivational quotes from assets (QuoteRepository reads app/src/main/assets/quotes.json, with a fallback).
+- Persists app state using Room and Jetpack DataStore (DatabaseModule, AppModule).
+- Integrates Hilt for DI and WorkManager via a custom Hilt worker factory (MindGuardApplication).
 
-### Dashboard
-- **Wellness Score** — a daily score (0–100) based on your screen time patterns
-- **Time Breakdown** — pie chart showing usage across categories (Deep Work, Entertainment, Communication, Social Media, etc.)
-- **App Leaderboard** — see which apps consume the most time
-- **Weekly Trends** — bar chart of daily screen time over the past week
-- **Timeline** — chronological view of your app usage sessions
-- **Streak & Achievements** — track your consistency and milestones
+## Key capabilities
+- Real-time usage/session tracking.
+- In-memory blocklist management with scheduling semantics.
+- Intervention overlay UI with motivational quotes and blocking actions.
+- Room database and DAOs wired via DI modules.
+- DataStore for settings and WorkManager for scheduled/background work.
 
-### Focus Sessions
-- Start timed focus sessions with a configurable duration (default 25 min)
-- Block distracting apps during focus time
-- Breathing exercises and motivational quotes
-- Celebration with confetti animation on session completion
+## Technology
+- Kotlin (JVM target 17)
+- Android SDK compile/target 35, minSdk 26
+- Hilt (Dagger) for DI
+- Room (AndroidX) for DB
+- Jetpack DataStore for preferences
+- WorkManager for background tasks
+- Kotlin Coroutines + Flow
+- ViewBinding, Material Design, ConstraintLayout, RecyclerView, ViewPager2
+- MPAndroidChart, Konfetti, Gson, Timber
+- Gradle Kotlin DSL with a version catalog (libs.versions.toml)
 
-### Smart App Categorization
-- 200+ pre-mapped apps across categories:
-  - **Deep Work** — Office, Docs, Notion, Slack, Zoom, learning apps
-  - **Communication** — WhatsApp, Telegram, Email
-  - **Entertainment** — YouTube, Netflix, TikTok, games
-  - **Social Media** — Twitter, Facebook, Reddit, Pinterest
-  - **System/Utility** — Settings, Camera, Calculator, File Manager
-  - **Neutral** — Browsers, Shopping
-- Fully customizable — reassign any app to a different category
+## Repository structure
+Observed top-level and important paths (abridged from the repository):
+- MindGuard.apk
+- app/
+  - src/main/java/com/mindguard/
+    - MindGuardApplication.kt
+    - di/ (Hilt modules: App, Database, Coroutines, Repository)
+    - data/
+      - db/ (Room DB, DAOs)
+      - model/
+      - repository/
+    - domain/engine/
+    - intervention/ (overlay + QuoteRepository)
+    - service/ (usage monitor, blocklist, BootReceiver)
+    - ui/ (activities/fragments: dashboard, focus, onboarding, settings)
+    - worker/ (WorkManager workers)
+  - src/main/assets/quotes.json
+- build.gradle.kts (top-level)
+- gradle/, gradlew, settings.gradle.kts
 
-### Usage Rules & Interventions
-- Set time limits per app, per category, or total screen time
-- Trigger types: continuous session or cumulative daily usage
-- Actions: notification alerts, overlay warnings, or app blocking
-- Three strictness levels: Gentle, Balanced, Strict
+Note: many source excerpts in the supplied dossier are truncated; the above is based on file paths and excerpts provided.
 
-### Sleep Guard
-- Configurable sleep hours (default 11 PM – 7 AM)
-- Monitors and discourages phone usage during sleep time
+## Getting started
+The original project README includes build instructions. Reproduced from the repository evidence:
 
-### Achievement System
-- Gamified milestones: first focus session, Instagram-free day, 7-day streak, 1000 minutes saved, Night Owl Slayer
-- Categories: Focus, Streak, Productivity, Milestone
+Prerequisites
+- Java 17 (JDK)
+- Android SDK with platform 35 and build-tools 35.0.0
+- ANDROID_HOME set to your SDK location
 
-### Home Screen Widget
-- At-a-glance wellness score and daily stats
-- Auto-updates via WorkManager
-
-### Settings
-- Notification preferences
-- Dark mode support
-- App category management
-- Usage rules management
-- Focus mode configuration
-- Data export (CSV)
-- Reset to defaults
-
-## Tech Stack
-
-| Layer | Technology |
-|-------|-----------|
-| Language | Kotlin |
-| Min SDK | 26 (Android 8.0) |
-| Target/Compile SDK | 35 |
-| DI | Hilt (Dagger) |
-| Database | Room |
-| Async | Kotlin Coroutines + Flow |
-| Background | WorkManager + Hilt Workers |
-| Preferences | Jetpack DataStore |
-| UI | ViewBinding, Material Design, ConstraintLayout, ViewPager2, RecyclerView |
-| Charts | MPAndroidChart |
-| Animations | Konfetti |
-| Logging | Timber |
-| JSON | Gson |
-| Build | Gradle (Kotlin DSL), Version Catalog |
-
-## Project Structure
-
-```
-app/src/main/java/com/mindguard/
-├── MindGuardApplication.kt          # Application class (Hilt + WorkManager)
-├── data/
-│   ├── db/                           # Room database, DAOs, type converters
-│   ├── model/                        # Data models & Room entities
-│   └── repository/                   # Repository layer
-├── di/                               # Hilt modules (App, Database, Coroutines, Repository)
-├── domain/engine/                    # Business logic (Wellness Score, Rules, Achievements, Focus)
-├── intervention/                     # Intervention overlay & quote system
-├── service/                          # Background services (Usage Monitor, Blocklist, Boot Receiver)
-├── ui/
-│   ├── MainActivity.kt
-│   ├── dashboard/                    # Dashboard fragment, adapters, view holders
-│   ├── achievements/                 # Achievements screen
-│   ├── focus/                        # Focus session & completion screens
-│   ├── onboarding/                   # Onboarding flow (Welcome, Profile, Permissions, App Review)
-│   └── settings/                     # Settings, rules, and app categories screens
-├── utils/                            # Permission utilities
-├── widget/                           # Home screen widget
-└── worker/                           # Background workers (Daily Summary, Behavior Analysis, Sleep Guard, Widget Update)
-```
-
-## Getting Started
-
-### Prerequisites
-
-- **Java 17** (JDK)
-- **Android SDK** with platform 35 and build-tools 35.0.0
-- Set `ANDROID_HOME` environment variable to your SDK location
-
-### Build
-
+Build (from project root)
 ```bash
-# Clone the repository
 git clone https://github.com/yashraj-ghemud/health-app.git
 cd health-app
 
@@ -120,27 +72,51 @@ cd health-app
 # The APK will be at: app/build/outputs/apk/debug/app-debug.apk
 ```
 
-### Install
+Install
+- A pre-built APK (MindGuard.apk) is present at the project root per repository contents. The repository README suggests installing that APK on a device and granting required permissions, but reviewers should validate permissions manually (see Configuration / Safety).
 
-A pre-built debug APK (`MindGuard.apk`) is included in the project root. To install:
+## Configuration
+What is present in the supplied evidence:
+- Top-level build.gradle.kts is present and shows plugin aliases (Kotlin, Android, Hilt, KSP, parcelize) using the version catalog.
+- The project uses Gradle Kotlin DSL and a libs.versions.toml (version catalog) for dependency management (evidence in audit).
+- DatabaseModule and AppModule are present and provide Room and DataStore wiring.
 
-1. Transfer `MindGuard.apk` to your Android device
-2. Enable **Install from unknown sources** in device settings
-3. Open the APK file to install
-4. Grant the required permissions when prompted (Usage Access, Notification, Overlay)
+What is not confirmed from the supplied dossier:
+- AndroidManifest.xml content is not present in the provided excerpts; therefore the manifest entries (declared permissions, services, receivers) cannot be confirmed here.
+- The quotes asset (app/src/main/assets/quotes.json) is present but was truncated in the supplied excerpt (risk of JSON parsing issues).
 
-## Permissions
+Suggested quick inspection steps for contributors
+- Check app/src/main/AndroidManifest.xml to confirm required permissions and registration of services/receivers (e.g., BootReceiver, UsageMonitorService). Note: the manifest file was not included in the provided excerpts.
+- Inspect app/src/main/assets/quotes.json to verify valid JSON and full quote entries.
+- Review DI modules under app/src/main/java/.../di/ (DatabaseModule, AppModule) to see Room/DataStore bindings and other provider bindings.
 
-| Permission | Purpose |
-|-----------|---------|
-| `PACKAGE_USAGE_STATS` | Monitor app usage data |
-| `SYSTEM_ALERT_WINDOW` | Show intervention overlays |
-| `FOREGROUND_SERVICE` | Run usage monitoring in background |
-| `RECEIVE_BOOT_COMPLETED` | Restart monitoring after device reboot |
-| `POST_NOTIFICATIONS` | Send alerts and daily summaries |
-| `READ_CALL_LOG` | Track communication usage |
-| `QUERY_ALL_PACKAGES` | Identify installed apps for categorization |
+## Development and quality notes
+- Tests: the repository contains only template example tests (ExampleUnitTest and an example androidTest). There are no focused unit/integration tests for core logic classes such as BlocklistManager, SessionTracker, or QuoteRepository in the supplied dossier.
+- CI / automation: no CI or workflow files were present in the provided evidence.
+- Some source excerpts were truncated in the dossier, so a full code review should begin by opening the complete files under app/src/main/java/.
+- The release build in provided configuration had isMinifyEnabled=false (no code shrinking observed in excerpts).
+
+Suggested immediate improvements (based on observed gaps)
+- Validate and fix app/src/main/assets/quotes.json so QuoteRepository can parse without falling back.
+- Add unit tests for BlocklistManager, SessionTracker, and QuoteRepository to validate concurrency and fallback behavior.
+- Confirm manifest entries and runtime permission flows (manifest not supplied in excerpts).
+
+## Safety and responsible use
+- Permissions: the README and audit note high-scope permissions referenced by the project (e.g., QUERY_ALL_PACKAGES, READ_CALL_LOG, SYSTEM_ALERT_WINDOW). These require careful justification and correct runtime UX and Play Store policy compliance — verify manifest use and in-app consent flows.
+- Overlays: InterventionOverlayView and InterventionManager rely on WindowManager overlays (SYSTEM_ALERT_WINDOW). Overlays can affect user safety and accessibility; minimize surface and validate inputs handled by overlays.
+- Data persistence: BlocklistManager appears to keep state in-memory in provided excerpts. If true, block state may be lost on process death/reboot; consider persisting block state if persistence is required.
+- Security posture: no evidence in the provided excerpts of secure storage/encryption for potentially sensitive collected data. Review data handling for compliance and user privacy.
+
+## Contributing
+No CONTRIBUTING.md or contributing guidelines were present in the supplied evidence. For contributors investigating or making changes:
+- Start by opening the app module: app/src/main/java/com/mindguard/
+  - DI: di/
+  - Database wiring: data/db/ and di/DatabaseModule
+  - Core services: service/ (SessionTracker, BlocklistManager, BootReceiver)
+  - Intervention UI: intervention/ (InterventionManager, InterventionOverlayView, QuoteRepository)
+  - Assets: app/src/main/assets/quotes.json
+- Validate AndroidManifest.xml (app/src/main/AndroidManifest.xml) to confirm permissions and registrations; the manifest was not included in the dossier excerpts and must be checked directly in the repository.
+- Run the build locally using the provided Gradle commands to reproduce the APK build and to surface any compile-time issues caused by truncated or missing files.
 
 ## License
-
-This project is for personal/educational use. 
+No license information was provided in the supplied evidence.
