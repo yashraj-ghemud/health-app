@@ -146,7 +146,9 @@ class SessionCompleteActivity : AppCompatActivity() {
         finish()
     }
     
+    @Deprecated("Use OnBackPressedDispatcher instead")
     override fun onBackPressed() {
+        super.onBackPressed()
         // Handle back press - go to dashboard
         viewDashboard()
     }
